@@ -42,5 +42,25 @@ namespace RTLab1.Services
 
             return "Мягкое реальное время";
         }
+
+        public static TaskModel CriticalTask(List<TaskModel> tasks)
+        {
+            TaskModel criticalTask = null;
+
+            foreach (TaskModel task in tasks)
+            {
+                if (task.Class != TaskClass.Hard)
+                {
+                    continue;
+                }
+
+                if (criticalTask == null || Slack(task) < Slack(criticalTask))
+                {
+                    criticalTask = task;
+                }
+            }
+
+            return criticalTask;
+        }
     }
 }
