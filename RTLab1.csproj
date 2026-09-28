@@ -46,6 +46,7 @@
     <Compile Include="src\RTLab1\Models\TaskModel.cs" />
     <Compile Include="src\RTLab1\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Services\TaskCalculations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
