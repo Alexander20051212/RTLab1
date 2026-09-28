@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,11 +50,13 @@
     <Compile Include="src\RTLab1\Models\TaskModel.cs" />
     <Compile Include="src\RTLab1\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Services\JsonDataLoader.cs" />
     <Compile Include="src\Services\TaskCalculations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="data\tasks.json" />
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="src\RTLab1\RTLab1.csproj" />
   </ItemGroup>
