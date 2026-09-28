@@ -8,5 +8,9 @@ namespace RTLab1.Services
         {
             return task.D - task.C;
         }
+        public static bool IsFeasible(TaskModel task)
+        {
+            return Slack(task) >= 0;
+        }
     }
 }
