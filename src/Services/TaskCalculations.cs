@@ -62,5 +62,35 @@ namespace RTLab1.Services
 
             return criticalTask;
         }
+
+        public static double RequiredReactionTime(List<TaskModel> tasks)
+        {
+            List<TaskModel> selectedTasks = new List<TaskModel>();
+
+            foreach (TaskModel task in tasks)
+            {
+                if (task.Class == TaskClass.Hard)
+                {
+                    selectedTasks.Add(task);
+                }
+            }
+
+            if (selectedTasks.Count == 0)
+            {
+                selectedTasks = tasks;
+            }
+
+            double minDeadline = selectedTasks[0].D;
+
+            foreach (TaskModel task in selectedTasks)
+            {
+                if (task.D < minDeadline)
+                {
+                    minDeadline = task.D;
+                }
+            }
+
+            return minDeadline;
+        }
     }
 }
