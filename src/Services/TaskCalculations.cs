@@ -103,5 +103,19 @@ namespace RTLab1.Services
 
             return utilization;
         }
+        public static string ClassifyArchitecture(int nCpu, bool hasNetwork)
+        {
+            if (hasNetwork)
+            {
+                return "Распределённая";
+            }
+
+            if (nCpu == 1)
+            {
+                return "Однопроцессорная";
+            }
+
+            return "Многопроцессорная";
+        }
     }
 }
