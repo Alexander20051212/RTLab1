@@ -1,4 +1,5 @@
-﻿using RTLab1.Models;
+﻿using System.Collections.Generic;
+using RTLab1.Models;
 
 namespace RTLab1.Services
 {
@@ -27,6 +28,19 @@ namespace RTLab1.Services
             }
 
             return "Произвольный";
+        }
+
+        public static string ClassifySystem(List<TaskModel> tasks)
+        {
+            foreach (TaskModel task in tasks)
+            {
+                if (task.Class == TaskClass.Hard)
+                {
+                    return "Жёсткое реальное время";
+                }
+            }
+
+            return "Мягкое реальное время";
         }
     }
 }
