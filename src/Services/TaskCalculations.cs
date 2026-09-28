@@ -92,5 +92,16 @@ namespace RTLab1.Services
 
             return minDeadline;
         }
+        public static double Utilization(List<TaskModel> tasks)
+        {
+            double utilization = 0.0;
+
+            foreach (TaskModel task in tasks)
+            {
+                utilization += task.C / task.T;
+            }
+
+            return utilization;
+        }
     }
 }
