@@ -15,6 +15,7 @@ namespace RTLab1
             List<TaskModel> tasks = data.Tasks;
 
             Console.WriteLine("==============================================");
+            Console.WriteLine(" Практическая работа 1");
             Console.WriteLine(" Классификация систем реального времени");
             Console.WriteLine("==============================================");
             Console.WriteLine();
@@ -24,7 +25,14 @@ namespace RTLab1
 
             Console.WriteLine(
                 "{0,-32} {1,-8} {2,6} {3,6} {4,6} {5,8} {6,-12} {7,-12}",
-                "Задача", "Класс", "C", "D", "T", "L", "Дедлайн", "Выполнимость");
+                "Задача",
+                "Класс",
+                "C",
+                "D",
+                "T",
+                "L",
+                "Дедлайн",
+                "Выполнимость");
 
             Console.WriteLine(new string('-', 115));
 
@@ -51,19 +59,30 @@ namespace RTLab1
             Console.WriteLine(" Результаты расчётов");
             Console.WriteLine("==============================================");
 
-            string systemClass = TaskCalculations.ClassifySystem(tasks);
-            TaskModel criticalTask = TaskCalculations.CriticalTask(tasks);
+            string systemClass =
+                TaskCalculations.ClassifySystem(tasks);
+
+            TaskModel criticalTask =
+                TaskCalculations.CriticalTask(tasks);
+
             double requiredReactionTime =
                 TaskCalculations.RequiredReactionTime(tasks);
+
             double utilization =
                 TaskCalculations.Utilization(tasks);
+
             string architecture =
                 TaskCalculations.ClassifyArchitecture(
                     data.Processors,
                     data.HasNetwork);
 
+            bool allTasksFeasible =
+                TaskCalculations.AllTasksFeasible(tasks);
+
             Console.WriteLine();
-            Console.WriteLine("Класс системы: " + systemClass);
+
+            Console.WriteLine(
+                "Класс системы: " + systemClass);
 
             if (criticalTask != null)
             {
@@ -74,7 +93,8 @@ namespace RTLab1
             }
             else
             {
-                Console.WriteLine("Критическая задача: отсутствует");
+                Console.WriteLine(
+                    "Критическая задача: отсутствует");
             }
 
             Console.WriteLine(
@@ -87,10 +107,35 @@ namespace RTLab1
 
             Console.WriteLine(
                 "Проверка U <= 1: {0}",
-                utilization <= 1.0 ? "выполняется" : "не выполняется");
+                utilization <= 1.0
+                    ? "выполняется"
+                    : "не выполняется");
 
             Console.WriteLine(
                 "Архитектура системы: " + architecture);
+
+            Console.WriteLine(
+                "Все дедлайны выполнимы: {0}",
+                allTasksFeasible
+                    ? "Да"
+                    : "Нет");
+
+            Console.WriteLine();
+
+            if (allTasksFeasible && utilization <= 1.0)
+            {
+                Console.WriteLine(
+                    "Заключение: рассчитанные временные ограничения");
+                Console.WriteLine(
+                    "выполняются, загрузка процессора не превышает 1.");
+            }
+            else
+            {
+                Console.WriteLine(
+                    "Заключение: имеются нарушения временных");
+                Console.WriteLine(
+                    "ограничений или загрузка процессора превышает 1.");
+            }
 
             Console.WriteLine();
             Console.WriteLine("Расчёт завершён.");

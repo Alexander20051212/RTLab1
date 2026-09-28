@@ -117,5 +117,17 @@ namespace RTLab1.Services
 
             return "Многопроцессорная";
         }
+        public static bool AllTasksFeasible(List<TaskModel> tasks)
+        {
+            foreach (TaskModel task in tasks)
+            {
+                if (!IsFeasible(task))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
