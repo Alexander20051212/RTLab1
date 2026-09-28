@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+
+# Visual Studio temporary files
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Build logs
+*.log
